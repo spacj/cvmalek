@@ -806,7 +806,7 @@
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(10);
             doc.setTextColor(...gray);
-            const aboutText = "Hands-on catering manager with 8+ years in fast food and casual dining. I love the energy of a busy kitchen and making sure every customer leaves happy (and full!). From managing high-volume rush hours to building awesome teams, I've done it all. I believe good food should be fast, affordable, and always tasty!";
+            const aboutText = "I'm a hands-on catering manager with 8+ years experience in tourism, fast food and casual dining. I love the energy of a busy kitchen and making sure every customer leaves happy (and full!). From managing high-volume rush hours to building awesome teams, I strongly believe in the importance of working in a clean and hygiene-compliant environment.";
             const aboutLines = doc.splitTextToSize(aboutText, contentWidth);
             doc.text(aboutLines, margin, y);
             
@@ -817,7 +817,7 @@
             doc.setFontSize(10);
             doc.setTextColor(...dark);
             doc.setFont('helvetica', 'bold');
-            const highlights = ['8+ Years Experience', '500+ Events Catered', '30+ Team Members Led', 'HACCP Certified'];
+            const highlights = ['8+ Years Experience', '100+ Events Catered', '30+ Team Members Led', 'HACCP Certified'];
             const highlightWidth = contentWidth / 4;
             highlights.forEach((h, i) => {
                 doc.text(h, margin + (highlightWidth * i) + highlightWidth/2, y + 11, { align: 'center' });
@@ -835,49 +835,55 @@
             const experiences = [
                 {
                     title: 'Catering Manager',
-                    company: 'QuickBite Catering Services',
-                    date: '2021 - Present',
+                    company: 'Bratwurststand Am Markt',
+                    location: 'Wurzburg, Germany',
+                    date: '2024 - 2025',
                     points: [
-                        'Running catering ops for events from 20 to 300+ people',
-                        'Managing a crew of 20 kitchen and service staff',
-                        'Boosted customer satisfaction scores by 35%',
-                        'Handling logistics, ordering, and vendor negotiations'
+                        'Running catering ops for events from 20 to 2000+ people',
+                        'Managing crew and ensure high quality standards',
+                        'Handling logistics, ordering, and vendor negotiations',
+                        'Costs management and ensure always the best quality of products and relations with the client'
                     ]
                 },
                 {
-                    title: 'Assistant Manager',
-                    company: 'Burger & Co. Restaurant',
-                    date: '2018 - 2021',
+                    title: 'Ice Cream Worker',
+                    company: "Cico' Gelato",
+                    location: 'Wurzburg, Germany',
+                    date: '2023 - 2024',
                     points: [
-                        'Supervised daily ops in a high-traffic burger joint',
-                        'Trained and scheduled 15+ team members',
-                        'Cut food waste by 25% with better inventory systems'
+                        'Excellent customer service provided also through a deep knowledge of the product, with a focus on allergenes and origin of ingredients',
+                        'Professional spatula service combined with preparation of ice cream desserts',
+                        'Operating cash register and handling transactions',
+                        'Inventory management and supplies restock'
                     ]
                 },
                 {
-                    title: 'Shift Supervisor',
-                    company: 'TacoTime Express',
-                    date: '2016 - 2018',
+                    title: 'Waiter',
+                    company: 'GastHaus Zur Krippe',
+                    location: 'Hall In Tirol, Austria',
+                    date: '2022',
                     points: [
-                        'Led shifts during peak lunch and dinner rushes',
-                        'Ensured food quality and speed of service standards',
-                        'Promoted twice in 18 months for performance'
+                        'Provided a strong understanding of Italian cuisine including dishes preparations, quality standards, basic wine pairings and ingredients sourcing',
+                        'Table setting, desserts and appetizers preparation and serving',
+                        'Effective products upselling by engagement and pairing suggestions'
                     ]
                 },
                 {
-                    title: 'Crew Member',
-                    company: 'Pizza Palace',
-                    date: '2014 - 2016',
+                    title: 'Head Entertainer',
+                    company: 'Pixie Animazione',
+                    location: 'Lecco, Italy',
+                    date: '2021',
                     points: [
-                        'Started from the ground up - making pizzas and taking orders',
-                        'Quickly became go-to person for training new hires'
+                        'Leading a 7 members equipe of touristic animators and coordinating their activities to ensure smooth operations',
+                        'Activity planning, guest engagement and performances',
+                        'Ability to create, mantain and develop strong and solid communities'
                     ]
                 }
             ];
             
             y += 15;
             experiences.forEach((exp, index) => {
-                if (y > pageHeight - 40) {
+                if (y > pageHeight - 45) {
                     doc.addPage();
                     y = margin;
                 }
@@ -900,18 +906,31 @@
                 doc.setTextColor(...orange);
                 doc.text(exp.company, margin, y);
                 
+                // Location
+                y += 5;
+                doc.setFontSize(9);
+                doc.setTextColor(...gray);
+                doc.text(exp.location, margin, y);
+                
                 // Points
                 y += 6;
                 doc.setFontSize(9);
                 doc.setTextColor(...gray);
                 exp.points.forEach(point => {
-                    doc.setFillColor(...orange);
-                    doc.circle(margin + 2, y - 1, 1, 'F');
-                    doc.text(point, margin + 6, y);
-                    y += 5;
+                    const lines = doc.splitTextToSize(point, contentWidth - 10);
+                    lines.forEach((line, lineIndex) => {
+                        if (lineIndex === 0) {
+                            doc.setFillColor(...orange);
+                            doc.circle(margin + 2, y - 1, 1, 'F');
+                            doc.text(line, margin + 6, y);
+                        } else {
+                            doc.text(line, margin + 6, y);
+                        }
+                        y += 5;
+                    });
                 });
                 
-                y += 5;
+                y += 3;
             });
             
             // Skills section - new page if needed
@@ -931,9 +950,9 @@
             
             const skillCategories = [
                 { name: 'Kitchen Operations', skills: ['Food Prep & Cooking', 'Menu Planning', 'Food Safety (HACCP)', 'Quality Control'] },
-                { name: 'Leadership', skills: ['Team Management', 'Training & Coaching', 'Customer Service', 'Conflict Resolution'] },
-                { name: 'Business', skills: ['Inventory Management', 'Cost Control', 'Scheduling', 'Vendor Relations'] },
-                { name: 'Catering', skills: ['Event Planning', 'Logistics & Setup', 'High-Volume Service', 'Client Communication'] }
+                { name: 'People & Leadership', skills: ['Team Management', 'Training & Coaching', 'Customer Service', 'Conflict Resolution'] },
+                { name: 'Business Skills', skills: ['Inventory Management', 'Cost Control', 'Scheduling', 'Vendor Relations'] },
+                { name: 'Event & Catering', skills: ['Event Planning', 'Logistics & Setup', 'High-Volume Service', 'Client Communication'] }
             ];
             
             const colWidth = contentWidth / 2;
@@ -977,7 +996,7 @@
             
             // Languages box
             doc.setFillColor(255, 248, 240);
-            doc.roundedRect(margin, y, halfWidth, 35, 3, 3, 'F');
+            doc.roundedRect(margin, y, halfWidth, 40, 3, 3, 'F');
             doc.setFillColor(...teal);
             doc.roundedRect(margin, y, halfWidth, 10, 3, 3, 'F');
             doc.rect(margin, y + 5, halfWidth, 5, 'F');
@@ -989,14 +1008,15 @@
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(9);
             doc.setTextColor(...gray);
-            doc.text('Dutch - Native', margin + 5, y + 18);
+            doc.text('Italian - Native', margin + 5, y + 18);
             doc.text('English - Fluent', margin + 5, y + 24);
             doc.text('German - Basic', margin + 5, y + 30);
+            doc.text('French - Basic', margin + 5, y + 36);
             
             // Certifications box
             const certX = margin + halfWidth + 10;
             doc.setFillColor(255, 248, 240);
-            doc.roundedRect(certX, y, halfWidth, 35, 3, 3, 'F');
+            doc.roundedRect(certX, y, halfWidth, 40, 3, 3, 'F');
             doc.setFillColor(...orange);
             doc.roundedRect(certX, y, halfWidth, 10, 3, 3, 'F');
             doc.rect(certX, y + 5, halfWidth, 5, 'F');
@@ -1009,8 +1029,7 @@
             doc.setFontSize(9);
             doc.setTextColor(...gray);
             doc.text('HACCP Certified', certX + 5, y + 18);
-            doc.text('Food Safety Level 2', certX + 5, y + 24);
-            doc.text('First Aid Trained', certX + 5, y + 30);
+            doc.text('112 Rescuer Training', certX + 5, y + 24);
             
             // Footer
             doc.setFillColor(...orange);
@@ -1020,7 +1039,7 @@
             doc.text('Thank you for reviewing my CV!', pageWidth / 2, pageHeight - 7, { align: 'center' });
             
             // Save
-            doc.save('CV_Catering_Manager.pdf');
+            doc.save('MalekAlQaisiCV.pdf');
             
             // Button feedback
             const btn = document.querySelector('.download-btn');
