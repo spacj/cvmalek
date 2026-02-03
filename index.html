@@ -810,19 +810,6 @@
             const aboutLines = doc.splitTextToSize(aboutText, contentWidth);
             doc.text(aboutLines, margin, y);
             
-            // Key highlights
-            y += aboutLines.length * 5 + 8;
-            doc.setFillColor(255, 248, 240);
-            doc.roundedRect(margin, y, contentWidth, 18, 3, 3, 'F');
-            doc.setFontSize(10);
-            doc.setTextColor(...dark);
-            doc.setFont('helvetica', 'bold');
-            const highlights = ['8+ Years Experience', '100+ Events Catered', '30+ Team Members Led', 'HACCP Certified'];
-            const highlightWidth = contentWidth / 4;
-            highlights.forEach((h, i) => {
-                doc.text(h, margin + (highlightWidth * i) + highlightWidth/2, y + 11, { align: 'center' });
-            });
-            
             // Experience section
             y += 28;
             doc.setFillColor(...orange);
