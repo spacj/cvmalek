@@ -80,6 +80,39 @@
             margin-top: 1rem;
             font-weight: 400;
         }
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.75rem;
+        }
+        .cta-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-mail {
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            color: white;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+        .cta-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        }
         .nav {
             display: flex;
             justify-content: center;
@@ -264,6 +297,60 @@
         @keyframes fillBar {
             to { transform: scaleX(1); }
         }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .projects-grid:last-child { margin-bottom: 0; }
+        .project-card {
+            display: block;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #fff8f0, #fff);
+            border-radius: 16px;
+            border-left: 4px solid var(--teal);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .project-card.featured { border-left-color: var(--orange); }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--yellow), var(--orange));
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.9rem;
+        }
+        .project-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .project-url {
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.7rem;
+            word-break: break-word;
+        }
+        .project-desc {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -397,11 +484,16 @@
             <h1 class="name"><span>Malek Al Qaisi</span></h1>
             <p class="title">Catering Manager & Food Service Professional</p>
             <p class="tagline">Serving up great food & even better experiences!</p>
+            <div class="cta-row">
+                <a class="cta-btn cta-mail" href="mailto:malekalqaisi@gmail.com">📧 Email Me</a>
+                <a class="cta-btn cta-whatsapp" href="https://wa.me/393776103737" target="_blank" rel="noopener">💬 WhatsApp Me</a>
+            </div>
         </header>
         <nav class="nav">
             <button class="nav-btn active" data-section="about">About Me</button>
             <button class="nav-btn" data-section="experience">Experience</button>
             <button class="nav-btn" data-section="skills">Skills</button>
+            <button class="nav-btn" data-section="projects">Projects</button>
             <button class="nav-btn" data-section="contact">Contact</button>
         </nav>
         <section class="section" id="about">
@@ -433,10 +525,6 @@
                 <div class="fun-fact">
                     <div class="fun-fact-number">30+</div>
                     <div class="fun-fact-label">Team Members Led</div>
-                </div>
-                <div class="fun-fact">
-                    <div class="fun-fact-number">1000s</div>
-                    <div class="fun-fact-label">Happy Customers</div>
                 </div>
             </div>
             <div class="two-column">
@@ -610,6 +698,41 @@
                 </div>
             </div>
         </section>
+        <section class="section" id="projects">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <h2 class="section-title">Projects I've Built</h2>
+            </div>
+            <p class="about-text" style="margin-bottom: 1.5rem;">
+                Beyond the kitchen, I design and build web platforms end to end. Here are some of the products I've developed.
+            </p>
+            <div class="projects-grid">
+                <a class="project-card featured" href="https://staff.toolee.nl" target="_blank" rel="noopener">
+                    <span class="project-badge">⭐ Featured</span>
+                    <h3 class="project-title">Staff Toolee</h3>
+                    <span class="project-url">staff.toolee.nl ↗</span>
+                    <p class="project-desc">A staff management platform for organizing teams, scheduling and day-to-day workforce operations.</p>
+                </a>
+                <a class="project-card featured" href="https://tourhunts.com" target="_blank" rel="noopener">
+                    <span class="project-badge">⭐ Featured</span>
+                    <h3 class="project-title">Tourhunts</h3>
+                    <span class="project-url">tourhunts.com ↗</span>
+                    <p class="project-desc">A GPS-confirmed tourist scavenger hunt platform connecting travellers with curated, interactive adventures.</p>
+                </a>
+            </div>
+            <div class="projects-grid">
+                <a class="project-card" href="https://toolee.nl" target="_blank" rel="noopener">
+                    <h3 class="project-title">Toolee</h3>
+                    <span class="project-url">toolee.nl ↗</span>
+                    <p class="project-desc">An SEO-optimised blog and content platform about the Netherlands.</p>
+                </a>
+                <a class="project-card" href="https://bodymetricspro.com" target="_blank" rel="noopener">
+                    <h3 class="project-title">BodyMetrics Pro</h3>
+                    <span class="project-url">bodymetricspro.com ↗</span>
+                    <p class="project-desc">A personal-trainers directory with a blog and handy calculators for gym enthusiasts.</p>
+                </a>
+            </div>
+        </section>
         <section class="section" id="contact">
             <div class="section-header">
                 <span class="section-icon">📬</span>
@@ -631,10 +754,10 @@
                     </div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">💼</div>
+                    <div class="contact-icon">💬</div>
                     <div class="contact-info">
-                        <h4>Portfolio</h4>
-                        <p>Coming Soon!</p>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/393776103737" target="_blank" rel="noopener">+39 377 6103737</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
