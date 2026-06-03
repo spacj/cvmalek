@@ -1147,7 +1147,51 @@
             doc.setTextColor(...gray);
             doc.text('HACCP Certified', certX + 5, y + 18);
             doc.text('112 Rescuer Training', certX + 5, y + 24);
-            
+
+            // Projects section
+            y += 52;
+            if (y > pageHeight - 60) {
+                doc.addPage();
+                y = margin;
+            }
+            doc.setFillColor(...orange);
+            doc.rect(margin, y, 4, 10, 'F');
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.setTextColor(...dark);
+            doc.text('PROJECTS', margin + 8, y + 7);
+
+            const projects = [
+                { name: 'Staff Toolee', url: 'staff.toolee.nl', desc: 'Staff management platform for teams, scheduling and workforce operations.' },
+                { name: 'Tourhunts', url: 'tourhunts.com', desc: 'GPS-confirmed tourist scavenger hunt platform for curated, interactive adventures.' },
+                { name: 'Toolee', url: 'toolee.nl', desc: 'SEO-optimised blog and content platform about the Netherlands.' },
+                { name: 'BodyMetrics Pro', url: 'bodymetricspro.com', desc: 'Personal-trainers directory with a blog and fitness calculators for gym enthusiasts.' }
+            ];
+
+            y += 16;
+            projects.forEach(proj => {
+                if (y > pageHeight - 30) {
+                    doc.addPage();
+                    y = margin;
+                }
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(11);
+                doc.setTextColor(...dark);
+                doc.text(proj.name, margin, y);
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(9);
+                doc.setTextColor(...orange);
+                doc.text(proj.url, pageWidth - margin, y, { align: 'right' });
+
+                y += 5;
+                doc.setFontSize(9);
+                doc.setTextColor(...gray);
+                const descLines = doc.splitTextToSize(proj.desc, contentWidth);
+                doc.text(descLines, margin, y);
+                y += descLines.length * 5 + 4;
+            });
+
             // Footer
             doc.setFillColor(...orange);
             doc.rect(0, pageHeight - 15, pageWidth, 15, 'F');
